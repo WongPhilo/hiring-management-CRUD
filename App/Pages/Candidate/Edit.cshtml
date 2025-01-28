@@ -1,0 +1,44 @@
+@page
+@model RazorPagesWebServer.Pages.Candidate.Edit.BaseModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<partial name="Header" />
+
+<h1>Edit a candidate profile</h1>
+<form method="post">
+    <div>
+    <input hidden asp-for="Candidate.ID" value="@Model.Candidate.ID" />
+    <span class="error" asp-validation-for="Candidate.ID"></span>
+    <br></div>
+    
+    <div>
+    <label for="candidate-name">Name:</label>
+    <input id="candidate-name" asp-for="Candidate.Name" />
+    <span class="error" asp-validation-for="Candidate.Name"></span>
+    <br></div>
+
+    <div>
+    <label for="candidate-location">Location:</label>
+    <input id="candidate-location" asp-for="Candidate.Location" />
+    <span class="error" asp-validation-for="Candidate.Location"></span>
+    <br></div>
+
+    <div>
+    <label for="candidate-email">Email:</label>
+    <input id="candidate-email" asp-for="Candidate.Email" />
+    <span class="error" asp-validation-for="Candidate.Email"></span>
+    <br></div>
+
+    <div>
+    <label for="candidate-phone">Phone:</label>
+    <input id="candidate-phone" asp-for="Candidate.Phone" />
+    <span class="error" asp-validation-for="Candidate.Phone"></span>
+    <br></div>
+
+    <div>
+    <label for="candidate-date">Registration Date:</label>
+    <input id="candidate-date" asp-for="Candidate.RegistrationDate" />
+    <span class="error" asp-validation-for="Candidate.RegistrationDate"></span>
+    <br></div>
+
+    <input type="submit" />
+</form>

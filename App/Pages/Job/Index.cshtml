@@ -1,0 +1,39 @@
+@page
+@model RazorPagesWebServer.Pages.Job.Index.BaseModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<partial name="Header" />
+
+<h1>Position Overview</h1>
+<ul>
+    <li><a href="/Job/Create">Create a position</a></li>
+</ul>
+
+<table>
+    <thead>
+        <tr>
+            <th>Job ID</th>
+            <th>Title</th>
+            <th>Location</th>
+            <th>Salary</th>
+            <th>Description</th>
+            <th>Active</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var job in Model.JobList)
+        {
+            <tr>
+                <td>@job.ID</td>
+                <td>@job.Title</td>
+                <td>@job.Location</td>
+                <td>@job.Salary</td>
+                <td>@job.Description</td>
+                <td>@(job.Active == true ? "Open" : "Closed")</td>
+                <td><form asp-page-handler="delete" asp-route-id=@job.ID method="post"><button class="btn btn-primary">Delete</button></form></td>
+                <td><a href="/Job/Edit?Job.ID=@job.ID">Edit</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

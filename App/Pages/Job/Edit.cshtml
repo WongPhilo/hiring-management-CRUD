@@ -1,0 +1,44 @@
+@page
+@model RazorPagesWebServer.Pages.Job.Edit.BaseModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<partial name="Header" />
+
+<h1>Edit a position</h1>
+<form method="post">
+    <div>
+    <input hidden asp-for="Job.ID" value="@Model.Job.ID" />
+    <span class="error" asp-validation-for="Job.ID"></span>
+    <br></div>
+
+    <div>
+    <label for="job-title">Title:</label>
+    <input id="job-title" asp-for="Job.Title" /><br>
+    <span class="error" asp-validation-for="Job.Title"></span>
+    <br></div>
+
+    <div>
+    <label for="job-location">Location:</label>
+    <input id="job-location" asp-for="Job.Location" /><br>
+    <span class="error" asp-validation-for="Job.Location"></span>
+    <br></div>
+
+    <div>
+    <label for="job-salary">Salary:</label>
+    <input id="job-salary" asp-for="Job.Salary" /><br>
+    <span class="error" asp-validation-for="Job.Salary"></span>
+    <br></div>
+
+    <div>
+    <label for="job-description">Description:</label>
+    <input id="job-description" asp-for="Job.Description" /><br>
+    <span class="error" asp-validation-for="Job.Description"></span>
+    <br></div>
+
+    <div>
+    <label for="job-active">Active:</label>
+    <input id="job-active" asp-for="Job.Active" /><br>
+    <span class="error" asp-validation-for="Job.Active"></span>
+    <br></div>
+
+    <input type="submit" />
+</form>

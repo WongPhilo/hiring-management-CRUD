@@ -1,0 +1,51 @@
+@page
+@model RazorPagesWebServer.Pages.Interview.Create.BaseModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<partial name="Header" />
+
+<h1>Create an interview</h1>
+<form method="post">
+    <input hidden asp-for="Interview.ID" value="0" />
+
+    <div>
+    <label for="interview-job">Job:</label>
+    <select id="interview-job" asp-for="Interview.JobID">
+        @foreach (var job in Model.JobList)
+        {
+            <option value="@job.ID">@job.ID - @job.Title</option>
+        }
+    </select>
+    <span class="error" asp-validation-for="Interview.JobID"></span>
+    <br></div>
+
+    <div>
+    <label for="interview-candidate">Candidate:</label>
+    <select id="interview-candidate" asp-for="Interview.CandidateID">
+        @foreach (var candidate in Model.CandidateList)
+        {
+            <option value="@candidate.ID">@candidate.ID - @candidate.Name</option>
+        }
+    </select>
+    <span class="error" asp-validation-for="Interview.CandidateID"></span>
+    <br></div>
+
+    <div>
+    <label for="interview-date">Date:</label>
+    <input id="interview-date" asp-for="Interview.Date" value="@Model.currentDateTime" />
+    <span class="error" asp-validation-for="Interview.Date"></span>
+    <br></div>
+
+    <div>
+    <label for="interview-remarks">Remarks:</label>
+    <input id="interview-remarks" asp-for="Interview.Remarks" />
+    <span class="error" asp-validation-for="Interview.Remarks"></span>
+    <br></div>
+
+    <div>
+    <label for="interview-hired">Hired:</label>
+    <input id="interview-hired" asp-for="Interview.Hired" />
+    <span class="error" asp-validation-for="Interview.Hired"></span>
+    <br></div>
+
+    <input type="submit" />
+</form>

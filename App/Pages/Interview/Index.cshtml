@@ -1,0 +1,41 @@
+@page
+@model RazorPagesWebServer.Pages.Interview.Index.BaseModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<partial name="Header" />
+
+<h1>Interview Overview</h1>
+<ul>
+    <li><a href="/Interview/Create">Create an interview</a></li>
+</ul>
+
+<form method="post">
+<table>
+    <thead>
+        <tr>
+            <th>Interview ID</th>
+            <th>Job ID</th>
+            <th>Candidate ID</th>
+            <th>Date</th>
+            <th>Remarks</th>
+            <th>Hired</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var interview in Model.InterviewList)
+        {
+            <tr>
+                <td>@interview.ID</td>
+                <td><a href="/Job/Index">@interview.JobID</a></td>
+                <td><a href="/Candidate/Index">@interview.CandidateID</a></td>
+                <td>@interview.Date</td>
+                <td>@interview.Remarks</td>
+                <td>@interview.Hired</td>
+                <td><button type="submit" asp-page-handler="delete" asp-route-id="@interview.ID">Delete</button></td>
+                <td><a href="/Interview/Edit?Interview.ID=@interview.ID">Edit</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+</form>

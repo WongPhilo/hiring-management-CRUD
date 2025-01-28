@@ -1,0 +1,41 @@
+@page
+@model RazorPagesWebServer.Pages.Candidate.Index.BaseModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<partial name="Header" />
+
+<h1>Candidate Overview</h1>
+<ul>
+    <li><a href="/Candidate/Create">Create a candidate profile</a></li>
+</ul>
+
+<form method="post">
+<table>
+    <thead>
+        <tr>
+            <th>Candidate ID</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Registration Date</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var candidate in Model.CandidateList)
+        {
+            <tr>
+                <td>@candidate.ID</td>
+                <td>@candidate.Name</td>
+                <td>@candidate.Location</td>
+                <td>@candidate.Email</td>
+                <td>@candidate.Phone</td>
+                <td>@candidate.RegistrationDate</td>
+                <td><button type="submit" asp-page-handler="delete" asp-route-id="@candidate.ID">Delete</button></td>
+                <td><a href="/Candidate/Edit?Candidate.ID=@candidate.ID">Edit</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+</form>
